@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { CapacitorFirebasePlugin } from './definitions';
+import { CapacitorFirebasePlugin, NonFatalCrashOptions } from './definitions';
 
 export class CapacitorFirebaseWeb extends WebPlugin implements CapacitorFirebasePlugin {
   constructor() {
@@ -9,10 +9,10 @@ export class CapacitorFirebaseWeb extends WebPlugin implements CapacitorFirebase
     });
   }
 
-  async echo(options: { value: string }): Promise<{value: string}> {
-    console.log('ECHO', options);
-    return options;
+  async reportNonFatalCrash(options: NonFatalCrashOptions): Promise<void> {
+    return Promise.resolve();
   }
+
 }
 
 const CapacitorFirebase = new CapacitorFirebaseWeb();

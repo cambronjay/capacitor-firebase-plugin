@@ -5,5 +5,21 @@ declare module "@capacitor/core" {
 }
 
 export interface CapacitorFirebasePlugin {
-  echo(options: { value: string }): Promise<{value: string}>;
+  /**
+   * Report a Non-Fatal Crash
+   * @param {NonFatalCrashOptions} options - { name: string, message: string, url: string, stackTrace: string }
+   * @returns {Promise<void>} void
+   */
+  reportNonFatalCrash(options: NonFatalCrashOptions): Promise<void>;
+
+}
+
+export interface NonFatalCrashOptions {
+  /**
+   * The error information
+   */
+  name: string;
+  message: string;
+  url: string;
+  stackTrace: string;
 }
